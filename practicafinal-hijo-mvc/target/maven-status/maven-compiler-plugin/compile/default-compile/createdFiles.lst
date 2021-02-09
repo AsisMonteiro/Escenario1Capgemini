@@ -1,0 +1,4 @@
+com\capgemini\practicafinal\hijo\mvc\config\AppConfig.class
+com\capgemini\practicafinal\hijo\mvc\config\BackendConfig.class
+com\capgemini\practicafinal\hijo\mvc\config\FrontendConfig.class
+com\capgemini\practicafinal\hijo\mvc\webcontroladores\SimpleController.class

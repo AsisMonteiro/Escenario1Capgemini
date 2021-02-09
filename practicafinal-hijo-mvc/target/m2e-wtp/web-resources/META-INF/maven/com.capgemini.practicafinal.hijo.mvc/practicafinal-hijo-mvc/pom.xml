@@ -1,0 +1,146 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.capgemini.practicafinal.padre</groupId>
+		<artifactId>practicafinal</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<groupId>com.capgemini.practicafinal.hijo.mvc</groupId>
+	<artifactId>practicafinal-hijo-mvc</artifactId>
+	<packaging>war</packaging>
+
+
+	<!-- Propiedades -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<servlet.version>3.1.0</servlet.version> 
+		<jsp.version>2.3.1</jsp.version>
+		<jstl.version>1.2</jstl.version>
+
+		<jersey.version>2.31</jersey.version>
+		<jackson.version>2.8.7</jackson.version>
+
+	</properties>
+
+	<dependencies>
+
+		<!-- DEPENDENCIA AL MODULO HIJO DATA (para tener acceso a la entidad Categoria) -->
+		<dependency>
+			<groupId>com.capgemini.practicafinal.hijo.data</groupId>
+			<artifactId>practicafinal-hijo-data</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
+		<!-- Spring Web MVC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Java Servlet, JSP y JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JSP -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>${jsp.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JSTL -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
+		<!-- Implementacionde Jersey (Oracle) para REST -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<!-- Serializacion JSON Java mediante Jackson -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<!-- Serializacion JSON Java mediante Jackson por codigo -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<finalName>practicafinal</finalName>
+		<plugins>
+			<!-- Compilador Maven -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+			</plugin>
+
+			<!-- Generador WAR Maven -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+
+			<!-- Servidor Aplicaciones Web Jetty -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.10.v20150310</version>
+				<configuration>
+					<!-- Java 11 -->
+					<release>11</release>
+					<!-- App Web -->
+					<webApp>
+						<!-- Path (ID Unico) de App -->
+						<contextPath>/${project.build.finalName}</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- <build> <finalName>practicafinal</finalName> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-compiler-plugin</artifactId> <version>3.8.0</version> <configuration> 
+		<release>11</release> </configuration> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-war-plugin</artifactId> <version>3.3.0</version> <configuration> 
+		<failOnMissingWebXml>false</failOnMissingWebXml> </configuration> </plugin> 
+		</plugins> </build> -->
+
+</project>
