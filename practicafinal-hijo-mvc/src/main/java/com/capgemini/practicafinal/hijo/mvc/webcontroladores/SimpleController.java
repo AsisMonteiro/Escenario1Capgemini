@@ -35,12 +35,11 @@ public class SimpleController {
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	private ModelAndView mostrar() {
 
-		// Categoria categoria = getCategoria(1);
+		Categoria categoria = getCategoria(1);
 
 		ModelAndView mv = new ModelAndView();
 
-		// mv.addObject("nombre_categoria", categoria.getNombre());
-		mv.addObject("nombre_categoria", "holi");
+		mv.addObject("nombre_categoria", categoria.getNombre());
 		mv.setViewName("index");
 
 		return mv;
