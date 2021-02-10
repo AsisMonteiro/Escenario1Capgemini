@@ -11,6 +11,7 @@
 
 	<groupId>com.capgemini.practicafinal.hijo.rest</groupId>
 	<artifactId>practicafinal-hijo-rest</artifactId>
+	<packaging>war</packaging>
 
 	<properties>
 		<jersey.version>2.31</jersey.version>
@@ -50,5 +51,30 @@
 		 
 
 	</dependencies>
+	
+	
+	
+	<build>
+		<finalName>practicafinal</finalName>
+		<plugins>
+			<!-- Compilador Maven -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+			</plugin>
+
+			<!-- Generador WAR Maven -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+ 
+		</plugins>
+	</build>
 
 </project>
